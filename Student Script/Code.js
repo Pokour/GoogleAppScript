@@ -5,13 +5,12 @@
 /*****************************************************************
  * Global Varables Declarations
  */
-var userRow = 0;
-var roleRow = 0;
+var rowIndex = 0;
 var roleRecieved;
 var actionRequested;
 var library;
 
-var sheetId = '1tsb_MKAESDafYsi3C_lhaC0HLu_YyJ0BbxoXv9xkNRA';
+var sheetId = '';
 var app = SpreadsheetApp;
 var ss = app.openById(sheetId);
 var sheet = ss.getSheetByName("users");
