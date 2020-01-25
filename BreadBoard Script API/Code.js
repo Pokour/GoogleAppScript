@@ -33,7 +33,7 @@ var userHeaading = ['add1', 'add2', 'add3', 'city', 'state', 'pincode', 'mobile'
     'standard', 'interest1', 'interest2', 'interest3', 'dob'];
 
 /**************************************************************
- * Global variables for baic metadata to be used in the action
+ * Global variables for basic metadata to be used in the action
  */
 var userRow = 0;
 var roleRow = 0;
@@ -86,6 +86,10 @@ function updateParameters(event) {
   library = event.parameter.library;
 }
 
+/************************************************************
+ * This function checks the role recieved and further changes
+ * can b made depending upon the role recived
+ */
 function updateRoleParametrs(roleRecieved) {
   if (roleRecieved == "student") {
     heading = studentHeading;
@@ -102,6 +106,10 @@ function updateRoleParametrs(roleRecieved) {
   }
 }
 
+/****************************************************************
+ * This function is called to take the action intended by the 
+ * call of the script
+ */
 function takeAction(event) {
   if (actionRequested == "read") {
     readFromSheet();
@@ -113,11 +121,20 @@ function takeAction(event) {
   }
 }
 
+/*************************************************************
+ * This function is responsible to call getrow() to get the sheet
+ * data using correct indexes from global variables.
+ * It stores the reccieved dat to the appropriate return function
+ */
 function readFromSheet() {
   result.users = getRowData(userRow, "users");
   result.role = getRowData(roleRow, roleRecieved);
 }
 
+/************************************************************************
+ * This function recieves the poiter that is the index of the stored data
+ * and the target sheet.
+ */
 function getRowData(pointer, targetSheet) {
   sheet = ss.getSheetByName(targetSheet);
   var tempMultiArray = sheet.getRange(pointer, firstColumn, 1, headLength).getValues();
@@ -125,7 +142,10 @@ function getRowData(pointer, targetSheet) {
   return makeObject(heading, simpleArray);
 }
 
-// This function takes 2 arrays and convert into object with key and value from arrays and return object
+/***************************************************************************
+ * This function takes 2 arrays and convert into object with key and value 
+ * from arrays and return an object
+ */
 function makeObject(keys, values) {
   var obj = {};
   for (i = 0; i < headLength; i++) {
@@ -135,6 +155,10 @@ function makeObject(keys, values) {
   return obj;
 }
 
+/**************************************************************************
+ * When an existing user makes any update to the sheet data this function
+ * recieves the request and update the data to the sheet index
+ */
 function updateSheet(event) {
   var temp = [];
   var dataarray = [[]];
