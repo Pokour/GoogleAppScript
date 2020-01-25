@@ -46,8 +46,7 @@ function doGet(event) {
  * Updating Global parameters
  */
 function updateParameters(event) {
-    userRow = event.parameter.userPointer;
-    roleRow = event.parameter.rolePointer;
+    rowIndex = event.parameter.rowIndex;
     roleRecieved = event.parameter.role;
     actionRequested = event.parameter.action;
     library = event.parameter.library;
