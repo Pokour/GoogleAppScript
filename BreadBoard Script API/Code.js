@@ -8,12 +8,18 @@ Accepts GET request from WebApps using query parameters.
 5. make an object with the return data to the WebApp using contentService()
 */
 
-// Defining all the Global variables
+/****************************************************************
+ * Global objects with structures to carry the returns according to
+ * actions taken
+ */
 var result = { users: {}, role: {}, workshop: {}, courses: {} };
 var writeReturn = { userRow: 0, roleRow: 0, state: "null" };
 var updateReturn = { userRow: 0, roleRow: 0, state: "null" };
 
-// Column names for differeny roles stored as array
+/****************************************************************
+ * Global variable array to hold the column values that are
+ * headings in the Google sheets
+ */
 var studentHeading =
   ['add1', 'add2', 'add3', 'city', 'state', 'pincode', 'mobile', 'altmobile', 'instituteselected', 'institutelisted', 'institute',
     'standard', 'interest1', 'interest2', 'interest3', 'dob'];
@@ -26,17 +32,26 @@ var instituteHeading =
 var userHeaading = ['add1', 'add2', 'add3', 'city', 'state', 'pincode', 'mobile', 'altmobile', 'instituteselected', 'institutelisted', 'institute',
     'standard', 'interest1', 'interest2', 'interest3', 'dob'];
 
+/**************************************************************
+ * Global variables for baic metadata to be used in the action
+ */
 var userRow = 0;
 var roleRow = 0;
 var roleRecieved;
 var actionRequested;
 var library;
 
+/**************************************************************
+ * Global variable to target the sheet to be used.
+ */
 var sheetId = '1tsb_MKAESDafYsi3C_lhaC0HLu_YyJ0BbxoXv9xkNRA';
 var app = SpreadsheetApp;
 var ss = app.openById(sheetId);
 var sheet = ss.getSheetByName("users");
 
+/**************************************************************
+ * Global variable others
+ */
 var heading = [];
 var firstColumn;
 var headLength;
@@ -57,6 +72,12 @@ function doGet(event) {
 }
 //********************************************* doGet() ENDS HERE ********************************************* 
 
+/*************************************************************
+ * 1. update parameters(event) is used to extract the parameters
+ *    recieved fom the url and store it to the global variables
+ * 2. These variables are used to target the data in the sheets
+ *    by userRow, roleRow, roleRecieved, actionRequested, library
+ */
 function updateParameters(event) {
   userRow = event.parameter.userPointer;
   roleRow = event.parameter.rolePointer;
