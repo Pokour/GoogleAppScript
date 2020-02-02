@@ -5,7 +5,10 @@
 /*****************************************************************
  * Global Varables Declarations
  */
-var rowIndex = 0;
+var userSrciptId = '';
+var roleScriptId = '';
+var roleIndex = 0;
+var userIndex = 0;
 var roleRecieved;
 var actionRequested;
 var library;
@@ -46,10 +49,14 @@ function doGet(event) {
  * Updating Global parameters
  */
 function updateParameters(event) {
-    rowIndex = event.parameter.rowIndex;
+    roleScriptId = event.parameter.roleScriptId;
+    userScriptId = event.parameter.userScriptId;
+    roleIndex = event.parameter.rowIndex;
+    userIndex = event.parameter.userIndex;
     roleRecieved = event.parameter.role;
     actionRequested = event.parameter.action;
     library = event.parameter.library;
+
 }
 
 /*****************************************************************
