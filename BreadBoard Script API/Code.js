@@ -40,6 +40,7 @@ var roleRow = 0;
 var roleRecieved;
 var actionRequested;
 var library;
+var roleIndex;
 
 /**************************************************************
  * Global variable to target the sheet to be used.
@@ -84,6 +85,7 @@ function updateParameters(event) {
   roleRecieved = event.parameter.role;
   actionRequested = event.parameter.action;
   library = event.parameter.library;
+  roleIndex = event.parameter.roleIndex
 }
 
 function updateRoleParametrs(roleRecieved) {
