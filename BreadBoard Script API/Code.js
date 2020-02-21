@@ -85,7 +85,7 @@ function updateParameters(event) {
   roleRecieved = event.parameter.role;
   actionRequested = event.parameter.action;
   library = event.parameter.library;
-  roleIndex = event.parameter.roleIndex
+  roleIndex = event.parameter.roleIndex;
 }
 
 function updateRoleParametrs(roleRecieved) {
